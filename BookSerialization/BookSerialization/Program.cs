@@ -10,7 +10,9 @@ namespace BookSerialization
 		private static Catalog _catalog = new Catalog();
 		static void Main (string[] args)
 		{
+			// Чтение и десериализация исходного файла
 			Read();
+			
 			// Вывод в консоль данных по книгам из исходного xml файла
 			ShowCatalog(_catalog);
 			//var c = new Catalog();
