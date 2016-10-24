@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 
 namespace Task.DB
@@ -6,7 +7,9 @@ namespace Task.DB
     using System.ComponentModel.DataAnnotations.Schema;
 
 	[Table("Order Details")]
-	[KnownType(typeof(Product))]
+	//[KnownType(typeof(Product))]
+	[Serializable]
+	//[KnownType(typeof(Order))]
     public partial class Order_Detail
     {
         [Key]

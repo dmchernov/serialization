@@ -77,6 +77,8 @@
     <Compile Include="DB\Territory.cs" />
     <Compile Include="SerializationSolutions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\OrderDataContractSurrogate.cs" />
+    <Compile Include="Serialization\OrderDetailsSerializationSurrogate.cs" />
     <Compile Include="TestHelpers\SerializationTester.cs" />
     <Compile Include="TestHelpers\XmlDataContractSerializerTester.cs" />
   </ItemGroup>

@@ -1,3 +1,5 @@
+using System.Runtime.Serialization;
+
 namespace Task.DB
 {
     using System;
@@ -5,6 +7,12 @@ namespace Task.DB
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+	[Serializable]
+	//[KnownType(typeof(Employee))]
+	//[KnownType(typeof(Shipper))]
+	//[KnownType(typeof(Order_Detail))]
+	//[KnownType(typeof(Customer))]
+	//[KnownType(typeof(Order))]
 	public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
