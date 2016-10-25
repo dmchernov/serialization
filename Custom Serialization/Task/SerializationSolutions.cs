@@ -4,6 +4,7 @@ using Task.TestHelpers;
 using System.Runtime.Serialization;
 using System.Linq;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using Task.Serialization;
 
@@ -78,10 +79,10 @@ namespace Task
 		[TestMethod]
 		public void IDataContractSurrogate()
 		{
-			dbContext.Configuration.ProxyCreationEnabled = false;
-			dbContext.Configuration.LazyLoadingEnabled = false;
+			dbContext.Configuration.ProxyCreationEnabled = true;
+			dbContext.Configuration.LazyLoadingEnabled = true;
 
-			var tester = new XmlDataContractSerializerTester<IEnumerable<Order>>(new DataContractSerializer(typeof(IEnumerable<Order>), new DataContractSerializerSettings() {DataContractSurrogate = new OrderDataContractSurrogate(), PreserveObjectReferences = true, IgnoreExtensionDataObject = true}), true);
+			var tester = new XmlDataContractSerializerTester<IEnumerable<Order>>(new DataContractSerializer(typeof(IEnumerable<Order>), new DataContractSerializerSettings() {DataContractSurrogate = new OrderDataContractSurrogate(), PreserveObjectReferences = true, DataContractResolver = new ProxyDataContractResolver() }), true);
 			var orders = dbContext.Orders.ToList();
 
 			var t = (dbContext as IObjectContextAdapter).ObjectContext;
