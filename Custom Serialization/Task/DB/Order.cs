@@ -8,11 +8,12 @@ namespace Task.DB
     using System.ComponentModel.DataAnnotations.Schema;
 
 	[Serializable]
-	//[KnownType(typeof(Employee))]
-	//[KnownType(typeof(Shipper))]
-	//[KnownType(typeof(Order_Detail))]
-	//[KnownType(typeof(Customer))]
-	//[KnownType(typeof(Order))]
+	[KnownType(typeof(Employee))]
+	[KnownType(typeof(Shipper))]
+	[KnownType(typeof(Order_Detail))]
+	[KnownType(typeof(Customer))]
+	[KnownType(typeof(Order))]
+	[DataContract]
 	public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +21,7 @@ namespace Task.DB
         {
             Order_Details = new HashSet<Order_Detail>();
         }
-
+		[DataMember]
         public int OrderID { get; set; }
 
         [StringLength(5)]
@@ -56,14 +57,15 @@ namespace Task.DB
 
         [StringLength(15)]
         public string ShipCountry { get; set; }
-
+		[DataMember]
         public virtual Customer Customer { get; set; }
-
+		[DataMember]
         public virtual Employee Employee { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+		[DataMember]
         public virtual ICollection<Order_Detail> Order_Details { get; set; }
-
+		[DataMember]
         public virtual Shipper Shipper { get; set; }
     }
 }

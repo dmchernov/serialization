@@ -31,6 +31,7 @@ namespace Task.DB
         public byte[] Picture { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+		[DataMember]
         public virtual ICollection<Product> Products { get; set; }
     }
 }

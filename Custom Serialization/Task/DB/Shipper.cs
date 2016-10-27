@@ -1,8 +1,11 @@
+using System.Runtime.Serialization;
+
 namespace Task.DB
 {
 	using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+	[DataContract]
 	public partial class Shipper
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -15,6 +18,7 @@ namespace Task.DB
 
         [Required]
         [StringLength(40)]
+		[DataMember]
         public string CompanyName { get; set; }
 
         [StringLength(24)]

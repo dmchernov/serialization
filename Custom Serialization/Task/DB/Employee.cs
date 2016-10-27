@@ -1,3 +1,5 @@
+using System.Runtime.Serialization;
+
 namespace Task.DB
 {
     using System;
@@ -5,6 +7,7 @@ namespace Task.DB
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+	[DataContract]
 	public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -14,15 +17,17 @@ namespace Task.DB
             Orders = new HashSet<Order>();
             Territories = new HashSet<Territory>();
         }
-
+		[DataMember]
         public int EmployeeID { get; set; }
 
         [Required]
         [StringLength(20)]
+		[DataMember]
         public string LastName { get; set; }
 
         [Required]
         [StringLength(10)]
+		[DataMember]
         public string FirstName { get; set; }
 
         [StringLength(30)]
@@ -69,7 +74,7 @@ namespace Task.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees1 { get; set; }
-
+		[IgnoreDataMember]
         public virtual Employee Employee1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -29,7 +29,13 @@ namespace Task
 			var tester = new XmlDataContractSerializerTester<IEnumerable<Category>>(new NetDataContractSerializer(), true);
 			var categories = dbContext.Categories.ToList();
 
-			var c = categories.First();
+			//var c = categories.First();
+
+			var t = (dbContext as IObjectContextAdapter).ObjectContext;
+			foreach (var category in categories)
+			{
+				t.LoadProperty(category, p => p.Products);
+			}
 
 			tester.SerializeAndDeserialize(categories);
 		}
@@ -65,8 +71,6 @@ namespace Task
 			var orderDetails = dbContext.Order_Details.ToList();
 
 			var t = (dbContext as IObjectContextAdapter).ObjectContext;
-			t.ContextOptions.LazyLoadingEnabled = false;
-			t.ContextOptions.ProxyCreationEnabled = false;
 			foreach (var od in orderDetails)
 			{
 				t.LoadProperty(od, p => p.Product);

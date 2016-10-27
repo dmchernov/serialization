@@ -32,6 +32,24 @@ namespace Task.Serialization
 
 		public object GetObjectToSerialize(object obj, Type targetType)
 		{
+			if (targetType == typeof(Employee))
+				return (Employee)obj;
+			else if (targetType == typeof(Customer))
+				return (Customer)obj;
+			else if (targetType == typeof(Order_Detail))
+				return (Order_Detail)obj;
+			else if (targetType == typeof(Shipper))
+				return (Shipper)obj;
+			else if (targetType == typeof(Customer))
+				return (Customer)obj;
+			else if (targetType == typeof(IEnumerable<Order_Detail>))
+				return (IEnumerable<Order_Detail>)obj;
+			else if (targetType == typeof(IEnumerable<Order>))
+				return (IEnumerable<Order>)obj;
+			else if (targetType == typeof(Order))
+				return (Order)obj;
+			else if (targetType == typeof(Category))
+				return (Category)obj;
 			return obj;
 		}
 
