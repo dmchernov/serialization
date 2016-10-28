@@ -62,7 +62,6 @@ namespace Task
 		public void ISerializationSurrogate()
 		{
 			dbContext.Configuration.ProxyCreationEnabled = false;
-			dbContext.Configuration.LazyLoadingEnabled = false;
 
 			var surrogateSelector = new SurrogateSelector();
 			surrogateSelector.AddSurrogate(typeof(Order_Detail), new StreamingContext(), new OrderDetailsSerializationSurrogate());
@@ -97,7 +96,6 @@ namespace Task
 				t.LoadProperty(order, o => o.Employee);
 				t.LoadProperty(order, o => o.Order_Details);
 			}
-
 
 			tester.SerializeAndDeserialize(orders);
 		}
